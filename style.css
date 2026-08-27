@@ -1,0 +1,1818 @@
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+    --dark: #211711;
+    --dark-2: #302116;
+
+    --brown: #4c3525;
+    --brown-light: #75563c;
+
+    --gold: #c6a474;
+    --gold-light: #dfc49b;
+
+    --paper: #eee2cf;
+    --paper-dark: #d9c5a9;
+
+    --ink: #3b2a1e;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: var(--dark);
+
+    color: #f4eadc;
+
+    font-family:
+        "Noto Naskh Arabic",
+        serif;
+
+    overflow-x: hidden;
+}
+
+
+button {
+    font: inherit;
+}
+
+
+/* =========================================
+   COVER
+========================================= */
+
+.cover {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(28, 19, 13, .35),
+            rgba(28, 19, 13, .85)
+        ),
+        url("cover.jpg")
+        center / cover no-repeat;
+}
+
+
+.cover-light {
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(202, 169, 119, .16),
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    animation:
+        lightMove 10s infinite alternate ease-in-out;
+}
+
+
+@keyframes lightMove {
+
+    from {
+        transform:
+            translate(-100px, -50px);
+    }
+
+    to {
+        transform:
+            translate(120px, 80px);
+    }
+}
+
+
+/* =========================================
+   COVER CONTENT
+========================================= */
+
+.cover-content {
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    animation:
+        coverReveal 1.8s ease forwards;
+}
+
+
+@keyframes coverReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+.eyebrow {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 13px;
+
+    letter-spacing: 6px;
+
+    color: var(--gold);
+
+    margin-bottom: 25px;
+}
+
+
+.cover h1 {
+    font-size:
+        clamp(65px, 10vw, 125px);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    margin-bottom: 25px;
+}
+
+
+.cover-description {
+    color: #dfd0bc;
+
+    font-size: 20px;
+
+    margin-bottom: 50px;
+}
+
+
+/* =========================================
+   OPEN BUTTON
+========================================= */
+
+.open-book-btn {
+    background: transparent;
+
+    color: #f4eadc;
+
+    border: none;
+
+    border-bottom:
+        1px solid var(--gold);
+
+    padding:
+        10px 0;
+
+    cursor: pointer;
+
+    transition:
+        .4s ease;
+}
+
+
+.open-book-btn:hover {
+    color: var(--gold-light);
+
+    padding-right: 12px;
+}
+
+
+.arrow {
+    margin-right: 12px;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================
+   COVER BOOK
+========================================= */
+
+.cover-book {
+    position: absolute;
+
+    z-index: 2;
+
+    width: 250px;
+    height: 360px;
+
+    bottom: -190px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-5deg);
+
+    opacity: .5;
+
+    transition:
+        1s ease;
+}
+
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #493323,
+            #261b13
+        );
+
+    box-shadow:
+        20px 30px 60px
+        rgba(0, 0, 0, .6);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.book-title {
+    text-align: center;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    letter-spacing: 5px;
+
+    color: var(--gold);
+
+    font-size: 28px;
+}
+
+
+.book-title small {
+    display: block;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    margin-top: 12px;
+}
+
+
+/* =========================================
+   FLOATING PAPERS
+========================================= */
+
+.floating-paper {
+    position: absolute;
+
+    z-index: 3;
+
+    padding: 15px 20px;
+
+    background:
+        rgba(239, 225, 205, .9);
+
+    color: var(--ink);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    box-shadow:
+        5px 10px 25px
+        rgba(0, 0, 0, .2);
+}
+
+
+.paper-one {
+    top: 15%;
+    left: 9%;
+
+    transform:
+        rotate(-8deg);
+}
+
+
+.paper-two {
+    top: 28%;
+    right: 10%;
+
+    transform:
+        rotate(7deg);
+}
+
+
+/* =========================================
+   DATE
+========================================= */
+
+.cover-date {
+    position: absolute;
+
+    z-index: 4;
+
+    bottom: 30px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #bda88e;
+}
+
+
+/* =========================================
+   DESK SECTION
+========================================= */
+
+.desk-section {
+    min-height: 100vh;
+
+    padding:
+        120px 7%
+        150px;
+
+    background:
+        #332419;
+}
+
+
+.desk-wrapper {
+    max-width: 1250px;
+
+    margin: auto;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.desk-heading {
+    margin-bottom: 70px;
+
+    max-width: 600px;
+}
+
+
+.section-number {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    color: var(--gold);
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 25px;
+}
+
+
+.desk-heading h2 {
+    font-size:
+        clamp(40px, 6vw, 75px);
+
+    font-weight: 500;
+
+    line-height: 1.2;
+}
+
+
+.heading-line {
+    width: 70px;
+    height: 1px;
+
+    background:
+        var(--gold);
+
+    margin-top: 30px;
+}
+
+
+/* =========================================
+   DESK
+========================================= */
+
+.desk {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 750px;
+
+    background:
+        #76583e;
+
+    border-radius: 3px;
+
+    box-shadow:
+        0 40px 100px
+        rgba(0, 0, 0, .35);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   OPEN BOOK
+========================================= */
+
+.desk-book {
+    position: absolute;
+
+    width: 420px;
+
+    left: 5%;
+    top: 9%;
+
+    transform:
+        rotate(-7deg);
+
+    filter:
+        sepia(20%);
+
+    box-shadow:
+        15px 25px 40px
+        rgba(0, 0, 0, .3);
+
+    transition:
+        transform .5s ease;
+}
+
+
+.desk-book:hover {
+    transform:
+        rotate(-5deg)
+        translateY(-8px);
+}
+
+
+/* =========================================
+   PEN
+========================================= */
+
+.desk-pen {
+    position: absolute;
+
+    width: 220px;
+
+    left: 5%;
+    bottom: 18%;
+
+    transform:
+        rotate(18deg);
+}
+
+
+/* =========================================
+   FLOWER
+========================================= */
+
+.desk-flower {
+    position: absolute;
+
+    width: 170px;
+
+    right: 3%;
+    top: 7%;
+
+    transform:
+        rotate(8deg);
+
+    opacity: .85;
+}
+
+
+/* =========================================
+   LETTER
+========================================= */
+
+.letter-paper {
+    position: absolute;
+
+    width: 550px;
+
+    right: 8%;
+    top: 10%;
+
+    padding:
+        65px 65px 60px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3e7d3,
+            #e5d4b9
+        );
+
+    color: var(--ink);
+
+    transform:
+        rotate(2deg);
+
+    box-shadow:
+        15px 25px 45px
+        rgba(0, 0, 0, .3);
+
+    z-index: 4;
+}
+
+
+.letter-small {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    letter-spacing: 5px;
+
+    font-size: 11px;
+
+    color: var(--brown-light);
+
+    margin-bottom: 25px;
+}
+
+
+.letter-paper h3 {
+    font-size: 40px;
+
+    font-weight: 500;
+
+    margin-bottom: 25px;
+}
+
+
+.letter-text {
+    font-size: 17px;
+
+    line-height: 2;
+
+    color: #584332;
+}
+
+
+.letter-text p {
+    margin-bottom: 18px;
+}
+
+
+.final-paragraph {
+    padding-top: 20px;
+
+    border-top:
+        1px solid #c7b59d;
+}
+
+
+/* =========================================
+   HIDDEN WORD
+========================================= */
+
+.hidden-word {
+    display: inline-block;
+
+    position: relative;
+
+    cursor: pointer;
+
+    color: #715139;
+
+    border-bottom:
+        1px dotted #8c6b4c;
+}
+
+
+.hidden-word::after {
+    content:
+        "اضغطي هنا";
+
+    position: absolute;
+
+    bottom: 130%;
+    right: 50%;
+
+    transform:
+        translateX(50%);
+
+    white-space: nowrap;
+
+    padding: 5px 9px;
+
+    background:
+        #2b1e15;
+
+    color: #eee2d0;
+
+    font-size: 10px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .3s;
+}
+
+
+.hidden-word:hover::after {
+    opacity: 1;
+}
+
+
+/* =========================================
+   POLAROID
+========================================= */
+
+.polaroid {
+    position: absolute;
+
+    width: 210px;
+    height: 250px;
+
+    left: 34%;
+    bottom: 7%;
+
+    perspective: 1000px;
+
+    cursor: pointer;
+
+    transform:
+        rotate(-8deg);
+
+    z-index: 7;
+}
+
+
+.polaroid-front,
+.polaroid-back {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 10px;
+
+    background:
+        #f2eadf;
+
+    color: var(--ink);
+
+    backface-visibility: hidden;
+
+    transition:
+        transform .8s ease;
+
+    box-shadow:
+        8px 15px 25px
+        rgba(0, 0, 0, .3);
+}
+
+
+.polaroid-front img {
+    width: 100%;
+    height: 190px;
+
+    object-fit: cover;
+
+    filter:
+        sepia(20%);
+}
+
+
+.polaroid-front span {
+    display: block;
+
+    text-align: center;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    padding-top: 10px;
+}
+
+
+.polaroid-back {
+    transform:
+        rotateY(180deg);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+.polaroid-back small {
+    margin-top: 20px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    letter-spacing: 3px;
+}
+
+
+.polaroid.flipped
+.polaroid-front {
+    transform:
+        rotateY(180deg);
+}
+
+
+.polaroid.flipped
+.polaroid-back {
+    transform:
+        rotateY(360deg);
+}
+
+
+/* =========================================
+   P.S. NOTE
+========================================= */
+
+.ps-note {
+    position: absolute;
+
+    left: 12%;
+    bottom: 7%;
+
+    width: 240px;
+    height: 170px;
+
+    perspective: 1000px;
+
+    z-index: 8;
+
+    cursor: pointer;
+}
+
+
+.ps-front,
+.ps-back {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 25px;
+
+    background:
+        #e9d8bd;
+
+    color: var(--ink);
+
+    backface-visibility: hidden;
+
+    box-shadow:
+        8px 15px 25px
+        rgba(0, 0, 0, .25);
+
+    transition:
+        transform .8s ease;
+}
+
+
+.ps-front {
+    transform:
+        rotate(-3deg);
+}
+
+
+.ps-back {
+    transform:
+        rotateY(180deg);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 27px;
+
+    line-height: 1.4;
+}
+
+
+.ps-note.open
+.ps-front {
+    transform:
+        rotateY(180deg);
+}
+
+
+.ps-note.open
+.ps-back {
+    transform:
+        rotateY(360deg);
+}
+
+
+.ps-label {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 20px;
+
+    letter-spacing: 3px;
+}
+
+
+.ps-front p {
+    margin:
+        12px 0 18px;
+
+    font-size: 15px;
+}
+
+
+#openNote {
+    background: transparent;
+
+    border: none;
+
+    border-bottom:
+        1px solid #725238;
+
+    color: #513a28;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   BOOK SELECTION
+========================================= */
+
+.book-selection {
+    position: relative;
+
+    margin-top: 100px;
+
+    text-align: center;
+}
+
+
+.selection-heading p {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    color: var(--gold);
+}
+
+
+.selection-heading span {
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 23px;
+}
+
+
+.books {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    margin-top: 50px;
+}
+
+
+.mini-book {
+    position: relative;
+
+    width: 170px;
+    height: 230px;
+
+    border: none;
+
+    color: #e9dbc7;
+
+    cursor: pointer;
+
+    box-shadow:
+        10px 20px 30px
+        rgba(0, 0, 0, .3);
+
+    transition:
+        transform .5s ease;
+}
+
+
+.mini-book:hover {
+    transform:
+        translateY(-15px)
+        rotate(-2deg);
+}
+
+
+.mini-book span {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+
+    letter-spacing: 3px;
+}
+
+
+.mini-book small {
+    position: absolute;
+
+    bottom: 15px;
+    left: 15px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    color: var(--gold-light);
+}
+
+
+.book-one {
+    background: #4b3424;
+}
+
+
+.book-two {
+    background: #6a4a31;
+}
+
+
+.book-three {
+    background: #38271d;
+}
+
+
+/* =========================================
+   BOOK MESSAGE
+========================================= */
+
+.book-message {
+    position: relative;
+
+    max-width: 700px;
+
+    margin:
+        55px auto 0;
+
+    padding:
+        40px 50px;
+
+    background:
+        #e9dcc8;
+
+    color: var(--ink);
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    pointer-events: none;
+
+    transition:
+        .5s ease;
+}
+
+
+.book-message.show {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    pointer-events: auto;
+}
+
+
+.message-label {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: #8a6646;
+
+    margin-bottom: 20px;
+}
+
+
+#bookMessageText {
+    font-size: 20px;
+
+    line-height: 2;
+}
+
+
+.close-message {
+    position: absolute;
+
+    top: 10px;
+    left: 15px;
+
+    background: transparent;
+
+    border: none;
+
+    color: #6c4c35;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   CHAPTER SEAL
+========================================= */
+
+.chapter-seal {
+    margin-top: 75px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    pointer-events: none;
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+
+/* يظهر بعد اختيار كتاب */
+
+.chapter-seal.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    pointer-events: auto;
+}
+
+
+.chapter-seal > p {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+    color: #bca486;
+
+    margin-bottom: 18px;
+}
+
+
+.wax-seal {
+    width: 78px;
+    height: 78px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid #b78857;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #9c7047,
+            #56351f
+        );
+
+    color:
+        #e6c999;
+
+    box-shadow:
+        5px 10px 20px
+        rgba(0, 0, 0, .35);
+
+    cursor: pointer;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+
+.wax-seal:hover {
+    transform:
+        scale(1.1)
+        rotate(-5deg);
+
+    box-shadow:
+        8px 15px 30px
+        rgba(0, 0, 0, .45);
+}
+
+
+.wax-seal span {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 28px;
+}
+
+
+.chapter-seal small {
+    margin-top: 16px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #a99072;
+}
+
+
+/* =========================================
+   SECRET SECTION
+========================================= */
+
+.secret-section {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+.secret-background {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        url("library-wide.jpg")
+        center / cover no-repeat;
+
+    transform:
+        scale(1.05);
+
+    filter:
+        sepia(25%)
+        brightness(.65);
+}
+
+
+.secret-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(27, 18, 12, .63);
+}
+
+
+.secret-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 800px;
+
+    padding: 40px;
+}
+
+
+.secret-label {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    letter-spacing: 5px;
+
+    font-size: 12px;
+
+    color: var(--gold);
+
+    margin-bottom: 40px;
+}
+
+
+.secret-content h2 {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(45px, 7vw, 80px);
+
+    font-weight: 400;
+
+    line-height: 1.3;
+}
+
+
+.secret-line {
+    width: 60px;
+    height: 1px;
+
+    background:
+        var(--gold);
+
+    margin:
+        40px auto;
+}
+
+
+.secret-description {
+    font-size: 19px;
+
+    color: #e1d1bc;
+
+    margin-bottom: 45px;
+}
+
+
+.last-page-btn {
+    background: transparent;
+
+    border: none;
+
+    border-bottom:
+        1px solid var(--gold);
+
+    color: #f0dfc8;
+
+    padding-bottom: 8px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition:
+        .4s ease;
+}
+
+
+.last-page-btn:hover {
+    color: var(--gold-light);
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   FINAL SECTION
+========================================= */
+
+.final-section {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+.final-background {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        url("final-book.jpg")
+        center / cover no-repeat;
+
+    filter:
+        sepia(30%)
+        brightness(.55);
+}
+
+
+.final-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(28, 18, 12, .85),
+            rgba(28, 18, 12, .55)
+        );
+}
+
+
+.final-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 900px;
+
+    padding: 50px 25px;
+}
+
+
+.final-label {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    letter-spacing: 5px;
+
+    color: var(--gold);
+
+    font-size: 12px;
+
+    margin-bottom: 40px;
+}
+
+
+.final-content h2 {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(55px, 9vw, 110px);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    margin-bottom: 55px;
+}
+
+
+.final-content h2 span {
+    color:
+        var(--gold-light);
+}
+
+
+.final-message {
+    max-width: 650px;
+
+    margin: auto;
+
+    font-size: 20px;
+
+    line-height: 2;
+
+    color: #e2d4c2;
+}
+
+
+.final-divider {
+    width: 60px;
+    height: 1px;
+
+    background:
+        var(--gold);
+
+    margin:
+        45px auto 25px;
+}
+
+
+.final-wish {
+    font-size: 18px;
+
+    color: #d4c2ab;
+}
+
+
+.continued {
+    margin-top: 70px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 19px;
+
+    letter-spacing: 3px;
+
+    color: #a99479;
+}
+
+
+/* =========================================
+   HIDDEN MESSAGE
+========================================= */
+
+.hidden-message {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        rgba(24, 16, 11, .75);
+
+    backdrop-filter:
+        blur(8px);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity .4s ease;
+}
+
+
+.hidden-message.active {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+.hidden-message-inner {
+    position: relative;
+
+    width: min(500px, 85%);
+
+    padding: 60px 45px;
+
+    background:
+        #eee2cf;
+
+    color:
+        #3b2a1e;
+
+    text-align: center;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, .4);
+
+    transform:
+        translateY(20px);
+
+    transition:
+        transform .4s ease;
+}
+
+
+.hidden-message.active
+.hidden-message-inner {
+    transform:
+        translateY(0);
+}
+
+
+.hidden-message-inner p {
+    font-size: 22px;
+
+    line-height: 2;
+}
+
+
+.hidden-close {
+    position: absolute;
+
+    top: 12px;
+    left: 15px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #6a4a31;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .desk {
+        min-height: auto;
+
+        padding:
+            40px 20px 50px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 30px;
+
+        overflow: visible;
+    }
+
+
+    .desk-book,
+    .desk-pen,
+    .desk-flower,
+    .bookmark {
+        position: relative;
+
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+
+        transform: none;
+    }
+
+
+    .desk-book {
+        width: 80%;
+
+        align-self: center;
+    }
+
+
+    .letter-paper {
+        position: relative;
+
+        width: 100%;
+
+        right: auto;
+        top: auto;
+
+        transform: rotate(1deg);
+
+        order: 2;
+    }
+
+
+    .desk-pen {
+        width: 180px;
+
+        align-self: flex-start;
+    }
+
+
+    .desk-flower {
+        width: 130px;
+
+        align-self: flex-end;
+
+        margin-top: -100px;
+    }
+
+
+    .polaroid {
+        position: relative;
+
+        left: auto;
+        bottom: auto;
+
+        align-self: center;
+
+        margin-top: 20px;
+    }
+
+
+    .ps-note {
+        position: relative;
+
+        left: auto;
+        bottom: auto;
+
+        align-self: center;
+    }
+
+
+    .books {
+        flex-wrap: wrap;
+
+        gap: 20px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .cover {
+        min-height: 100svh;
+    }
+
+
+    .floating-paper {
+        display: none;
+    }
+
+
+    .cover h1 {
+        font-size: 60px;
+    }
+
+
+    .cover-description {
+        font-size: 17px;
+    }
+
+
+    .desk-section {
+        padding:
+            80px 20px;
+    }
+
+
+    .desk-heading h2 {
+        font-size: 45px;
+    }
+
+
+    .letter-paper {
+        padding:
+            40px 25px;
+    }
+
+
+    .letter-text {
+        font-size: 16px;
+
+        line-height: 1.9;
+    }
+
+
+    .books {
+        gap: 15px;
+    }
+
+
+    .mini-book {
+        width: 140px;
+        height: 190px;
+    }
+
+
+    .mini-book span {
+        font-size: 17px;
+    }
+
+
+    .book-message {
+        padding:
+            35px 25px;
+    }
+
+
+    #bookMessageText {
+        font-size: 17px;
+    }
+
+
+    .chapter-seal {
+        margin-top: 55px;
+    }
+
+
+    .secret-content {
+        padding: 25px;
+    }
+
+
+    .secret-content h2 {
+        font-size: 43px;
+    }
+
+
+    .final-content h2 {
+        font-size: 58px;
+    }
+
+
+    .final-message {
+        font-size: 17px;
+    }
+}
